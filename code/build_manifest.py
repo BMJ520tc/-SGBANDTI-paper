@@ -68,6 +68,7 @@ for (ds, sp), st in ST_DIR.items():
 # 2) SGBANDTI 消融（biosnap random full/no_subgraph/no_both：本地 result 全 5 seed）
 import torch, os
 ABL = {'no_subgraph': 'biosnap_random_hop2_no_subgraph',
+       'no_ban': 'biosnap_random_hop2_no_ban',
        'no_both': 'biosnap_random_hop2_no_both'}
 for cfg, d in ABL.items():
     a, p = [], []
@@ -79,12 +80,6 @@ for cfg, d in ABL.items():
     if a:
         emit('biosnap', 'random', 'SGBANDTI', cfg, np.array(a), np.array(p),
              source=f'result/{d}/seed_*/result_metrics.pt（本地复现）')
-
-# no_ban：AUROC 逐 seed 来自 00_汇总逐种子表；AUPRC 只有 mean±std（实验室回传，未复核 ddof）
-emit('biosnap', 'random', 'SGBANDTI', 'no_ban',
-     np.array([0.8803, 0.8783, 0.8736, 0.8773, 0.8789]),
-     None,
-     source='AUROC: 00_汇总逐种子表；AUPRC 逐 seed 未归档（实验室 B，no_ban AUPRC std 待复核）')
 
 # 3) 其他基线：00_汇总 mean ± sample SD（ddof=1），无公开逐 seed
 OTHER = {
