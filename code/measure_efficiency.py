@@ -41,10 +41,14 @@ def measure(model, loader, is_drugban):
     ep_time = time.perf_counter() - t0
     peak = torch.cuda.max_memory_allocated(device) / 1e9
     model.eval()
-    # 预热
+    # 预热（重置迭代器；dataset 可能短于 300+预热 batch）
+    warm_it = iter(loader)
     with torch.no_grad():
         for _ in range(5):
-            bg, prot, _ = next(it)
+            try:
+                bg, prot, _ = next(warm_it)
+            except StopIteration:
+                warm_it = iter(loader); bg, prot, _ = next(warm_it)
             bg, prot = bg.to(device), prot.to(device)
             if is_drugban:
                 _, _, score, _ = model(bg, prot, mode='eval')
