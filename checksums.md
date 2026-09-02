@@ -1,8 +1,8 @@
 # 源文件校验和（Source-File Checksums）
 
-> 对应论文 Supplementary Materials 中 "source-file checksums" 一项。
-> 记录本仓库关键源文件（手稿、图、冻结划分记录、核心代码）的 MD5 校验和，供审稿人核验文件一致性。
-> 生成日期：2026-09-02。用 `md5sum -c checksums.md`（提取哈希列）或逐行比对即可核验。
+> 对应论文 Supplementary Materials 中 source-file checksums 一项。
+> MD5 按 git 检出后的 LF 规范化文件计算（见 .gitattributes），干净 clone 上可核验。
+> 生成日期：2026-09-02。
 
 ## Manuscript
 ```
@@ -15,28 +15,22 @@ c9748b59ad037536c1cd513d00e66a72  manuscript_source/sample.bib
 
 ## Frozen splits
 ```
-aac940aa5ddbe60ce9ac69b1a371c31c  data/SPLITS_FROZEN.json
-0a1e3a51f2d58a156e0af8c6f01dd5a1  data/SPLITS_FROZEN.md
+f34c8b0d4c34d30d05e5bf5331d188a1  data/SPLITS_FROZEN.json
+17bc919adc9d26248219333c1e1b6efe  data/SPLITS_FROZEN.md
 ```
 
 ## Core code
 ```
 a2e22baed92ddb53b45635ebc075ae10  code/build_splits.py
 fad7433f55eb220c095f04231350531b  code/eval_with_ci.py
-fedfc94b13ce10a1fc2e4405576e22ce  code/build_manifest.py
+a67be095304a8913666d6c99353cab72  code/build_manifest.py
 846d1859033e54992c8950cfd57d8a40  code/paired_bootstrap.py
-a03c9a07063086bafee1f7673c68d748  code/run_all.sh
+8ef619a54c174586af03f0dfc6e01d2f  code/run_all.sh
 9db5b45dd1309d68db7e916ae49be6a9  code/measure_forward_fair.py
-ab419145ab86a45027cf05040bb3b1c9  code/generate_ablation_figure.py
-11bc4341d507b22ff7df6760f0b429e4  code/generate_split_figure.py
-```
-
-## Processed data (per-split MD5, from SPLITS_FROZEN.json)
-```
-5c3f4eede73965b9b67dd57aceb850e9  data/bindingdb/random/train.csv
-9d4dafe2c4e598f43b87d210719566cd  data/bindingdb/random/val.csv
-cdcfc9e882355180ee36ff043de794ba  data/bindingdb/random/test.csv
-f5b232de8ab1c9f0e26b14e1d31b0f1f  data/biosnap/random/train.csv
-452f3334e2b35a4c1d3b0f3e5d7a1c2b  data/biosnap/random/val.csv
-1426fdebc9e1a5f8b0d3c6e4f2a8b7d5  data/biosnap/random/test.csv
+ad047ba99a7cbfb65ee0495fdc3bd528  code/generate_ablation_figure.py
+0e582d7b74a920eceb2fbbe25c2e0bb8  code/generate_split_figure.py
+42295692ae5e071a8844784573ab6baf  code/gcn.py
+fa6b29a68be4041284b69647b585bce0  code/models.py
+8c64bbcbf3b0adcd326df0396d030763  code/configs.py
+74003a90386207249513a3c8b954ef5e  code/main.py
 ```

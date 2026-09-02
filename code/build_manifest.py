@@ -67,8 +67,9 @@ for (ds, sp), st in ST_DIR.items():
              source=f'stats_input/{st}/{model}/seed_*_y_pred.npy（逐样本重算）',
              pred_file=f'stats_input/{st}/{model}/', true_file=f'stats_input/{st}/{model}/')
 
-# 2) SGBANDTI 消融（biosnap random full/no_subgraph/no_both：本地 result 全 5 seed）
+# 2) SGBANDTI 消融（biosnap random full/no_subgraph/no_both/gcn_tokens：results/per_seed 全 5 seed）
 import torch, os
+PER = os.path.join('results', 'per_seed')
 ABL = {'no_subgraph': 'biosnap_random_hop2_no_subgraph',
        'no_ban': 'biosnap_random_hop2_no_ban',
        'no_both': 'biosnap_random_hop2_no_both',
@@ -76,13 +77,13 @@ ABL = {'no_subgraph': 'biosnap_random_hop2_no_subgraph',
 for cfg, d in ABL.items():
     a, p = [], []
     for s in SEEDS:
-        f = f'result/{d}/seed_{s}/result_metrics.pt'
+        f = os.path.join(PER, f'{d}', f'seed_{s}', 'result_metrics.pt')
         if os.path.exists(f):
             m = torch.load(f, map_location='cpu', weights_only=False)['test_metrics']
             a.append(m['auroc']); p.append(m['auprc'])
     if a:
         emit('biosnap', 'random', 'SGBANDTI', cfg, np.array(a), np.array(p),
-             source=f'result/{d}/seed_*/result_metrics.pt（本地复现）')
+             source=f'results/per_seed/{d}/seed_*/result_metrics.pt（本地复现）')
 
 # 3) 其他基线：00_汇总 mean ± sample SD（ddof=1），无公开逐 seed
 OTHER = {

@@ -1,0 +1,16 @@
+# 统一换行符为 LF：数据文件哈希按 LF 规范化计算（SPLITS_FROZEN），
+# 强制 LF 检出使干净 clone 上 MD5 与冻结记录一致。
+*.csv text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.tex text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+*.cff text eol=lf
+*.bib text eol=lf
+*.npy binary
+*.pt binary
+*.pth binary
+*.png binary
+*.pdf binary
+*.svg text eol=lf

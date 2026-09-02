@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 运行产物（一键链 code/ 内生成的图；正式投稿图在 manuscript_source/ 由 git 跟踪）
+code/figure_ablation_2x2.pdf
+code/figure_ablation_2x2.svg
+code/figure_ablation_2x2.png
+code/figure_biosnap_split_boxplots.pdf
+code/figure_biosnap_split_boxplots.svg
+code/figure_biosnap_split_boxplots.png
+
+# 子图缓存与检查点
+data/subgraph_cache/
+results/per_seed/**/plots/
+results/per_seed/**/model_epoch_*.pth
+results/per_seed/**/best_model_epoch_*.pth
+results/per_seed/**/*.pth
+
+# LaTeX 辅助文件
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out

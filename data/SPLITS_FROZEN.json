@@ -1,78 +1,78 @@
 {
- "git_commit": "5d93e6c89213c747a6d958a2012885327a03710a",
- "note": "冻结的最终 split；任何数据变化都会导致哈希改变",
- "splits": {
-  "bindingdb/random": {
-   "hash": {
-    "train": "5c3f4eede73965b9b67dd57aceb850e9",
-    "val": "9d4dafe2c4e598f43b87d210719566cd",
-    "test": "cdcfc9e882355180ee36ff043de794ba"
-   },
-   "counts": {
-    "samples": {
-     "train": 34439,
-     "val": 4920,
-     "test": 9840
+  "git_commit": "release-tag-pending",
+  "note": "冻结的最终 split；哈希按 LF 规范化计算（见 .gitattributes）。原引用的主仓库 commit 5d93e6c 不在本公开仓库历史中，改为随本仓库发布 release/tag 时绑定（release-tag-pending）。",
+  "splits": {
+    "bindingdb/random": {
+      "hash": {
+        "train": "5c3f4eede73965b9b67dd57aceb850e9",
+        "val": "9d4dafe2c4e598f43b87d210719566cd",
+        "test": "cdcfc9e882355180ee36ff043de794ba"
+      },
+      "counts": {
+        "samples": {
+          "train": 34439,
+          "val": 4920,
+          "test": 9840
+        },
+        "drugs": 14643,
+        "proteins": 2623,
+        "positive": 20674,
+        "negative": 28525
+      }
     },
-    "drugs": 14643,
-    "proteins": 2623,
-    "positive": 20674,
-    "negative": 28525
-   }
-  },
-  "biosnap/random": {
-   "hash": {
-    "train": "f5b232deb97ae36c50fee59117fcd26e",
-    "val": "452f33340abaa6e42f1a00b13b9e9f91",
-    "test": "1426fdeb57fd1cf63a18275e73dbdc9b"
-   },
-   "counts": {
-    "samples": {
-     "train": 19220,
-     "val": 2746,
-     "test": 5491
+    "biosnap/random": {
+      "hash": {
+        "train": "f5b232deb97ae36c50fee59117fcd26e",
+        "val": "452f33340abaa6e42f1a00b13b9e9f91",
+        "test": "1426fdeb57fd1cf63a18275e73dbdc9b"
+      },
+      "counts": {
+        "samples": {
+          "train": 19220,
+          "val": 2746,
+          "test": 5491
+        },
+        "drugs": 4505,
+        "proteins": 2181,
+        "positive": 13830,
+        "negative": 13627
+      }
     },
-    "drugs": 4505,
-    "proteins": 2181,
-    "positive": 13830,
-    "negative": 13627
-   }
-  },
-  "biosnap/unseen_drug": {
-   "hash": {
-    "train": "b576e0bc7efcbe2dd9db994f15dbc60c",
-    "val": "afe9ec28cec0711b16c19609c3c23911",
-    "test": "5af9ddfc3d053806bfd553ab40dd4e13"
-   },
-   "counts": {
-    "samples": {
-     "train": 19372,
-     "val": 2795,
-     "test": 5290
+    "biosnap/unseen_drug": {
+      "hash": {
+        "train": "b576e0bc7efcbe2dd9db994f15dbc60c",
+        "val": "afe9ec28cec0711b16c19609c3c23911",
+        "test": "5af9ddfc3d053806bfd553ab40dd4e13"
+      },
+      "counts": {
+        "samples": {
+          "train": 19372,
+          "val": 2795,
+          "test": 5290
+        },
+        "drugs": 4505,
+        "proteins": 2181,
+        "positive": 13830,
+        "negative": 13627
+      }
     },
-    "drugs": 4505,
-    "proteins": 2181,
-    "positive": 13830,
-    "negative": 13627
-   }
-  },
-  "biosnap/unseen_target": {
-   "hash": {
-    "train": "a501bf4dcdfc9a5650321f035985ee65",
-    "val": "8fae45322de832dee04cb155282d82fc",
-    "test": "1e35c17ce1c87bcfb93f32a1557f7df4"
-   },
-   "counts": {
-    "samples": {
-     "train": 19980,
-     "val": 2574,
-     "test": 4903
-    },
-    "drugs": 4505,
-    "proteins": 2181,
-    "positive": 13830,
-    "negative": 13627
-   }
+    "biosnap/unseen_target": {
+      "hash": {
+        "train": "a501bf4dcdfc9a5650321f035985ee65",
+        "val": "8fae45322de832dee04cb155282d82fc",
+        "test": "1e35c17ce1c87bcfb93f32a1557f7df4"
+      },
+      "counts": {
+        "samples": {
+          "train": 19980,
+          "val": 2574,
+          "test": 4903
+        },
+        "drugs": 4505,
+        "proteins": 2181,
+        "positive": 13830,
+        "negative": 13627
+      }
+    }
   }
- }
 }

@@ -3,6 +3,7 @@ from pathlib import Path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 
 mpl.rcParams.update(
@@ -24,27 +25,31 @@ mpl.rcParams.update(
 
 OUTPUT_STEM = Path(__file__).resolve().parent / "figure_biosnap_split_boxplots"
 
-# Per-seed AUROC/AUPRC (seeds 42, 52, 62, 72, 82).
-# Random-split values come from the local per-seed results
-# (result/biosnap_random_hop2/seed_summary_stats.csv); unseen-drug and
-# unseen-target values come from the laboratory final summary
-# (SGBANDTI__20260823/results/00_实验结果汇总.md).
+# Per-seed AUROC/AUPRC (seeds 42, 52, 62, 72, 82) read from the single
+# results_manifest.csv (SGBANDTI full rows, per-scenario), so every figure
+# number derives from the manifest rather than being hard-coded.
+MANIFEST = Path(__file__).resolve().parent.parent / "results" / "results_manifest.csv"
+_SEEDS = [42, 52, 62, 72, 82]
+_MF = pd.read_csv(MANIFEST)
+
+
+def _per_seed(split, metric):
+    row = _MF[
+        (_MF["dataset"] == "biosnap")
+        & (_MF["split"] == split)
+        & (_MF["model"] == "SGBANDTI")
+        & (_MF["config"] == "full")
+    ].iloc[0]
+    return np.array([row[f"{metric}_s{s}"] for s in _SEEDS], dtype=float)
+
+
 scenarios = [
-    {
-        "label": "Random",
-        "auroc": np.array([0.9062, 0.9090, 0.9040, 0.9065, 0.9052]),
-        "auprc": np.array([0.9171, 0.9180, 0.9093, 0.9086, 0.9130]),
-    },
-    {
-        "label": "Unseen drug",
-        "auroc": np.array([0.8801, 0.8764, 0.8813, 0.8805, 0.8785]),
-        "auprc": np.array([0.8820, 0.8824, 0.8861, 0.8803, 0.8795]),
-    },
-    {
-        "label": "Unseen target",
-        "auroc": np.array([0.6567, 0.6154, 0.6461, 0.6167, 0.6378]),
-        "auprc": np.array([0.6282, 0.5861, 0.6355, 0.5953, 0.6170]),
-    },
+    {"label": "Random", "auroc": _per_seed("random", "auroc"),
+     "auprc": _per_seed("random", "auprc")},
+    {"label": "Unseen drug", "auroc": _per_seed("unseen_drug", "auroc"),
+     "auprc": _per_seed("unseen_drug", "auprc")},
+    {"label": "Unseen target", "auroc": _per_seed("unseen_target", "auroc"),
+     "auprc": _per_seed("unseen_target", "auprc")},
 ]
 
 

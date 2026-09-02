@@ -3,6 +3,7 @@ from pathlib import Path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 
 mpl.rcParams.update(
@@ -25,14 +26,26 @@ mpl.rcParams.update(
 OUTPUT_STEM = Path(__file__).resolve().parent / "figure_ablation_2x2"
 
 
+_MANIFEST = Path(__file__).resolve().parent.parent / "results" / "results_manifest.csv"
+_MF = pd.read_csv(_MANIFEST)
+
+
+def _ablation_row(config):
+    return _MF[
+        (_MF["dataset"] == "biosnap")
+        & (_MF["split"] == "random")
+        & (_MF["model"] == "SGBANDTI")
+        & (_MF["config"] == config)
+    ].iloc[0]
+
+
 def main() -> None:
     configs = ["Full\nSGBANDTI", "No\nsubgraph", "GCN\ntokens", "No\nBAN", "No\nboth"]
-    auroc = np.array([0.9062, 0.8757, 0.9051, 0.8777, 0.8598])
-    auprc = np.array([0.9132, 0.8782, 0.9110, 0.8759, 0.8551])
-
-    # Sample SD (ddof=1) across five seeds (from result_metrics.pt).
-    auroc_err = np.array([0.0019, 0.0014, 0.0043, 0.0025, 0.0028])
-    auprc_err = np.array([0.0043, 0.0034, 0.0068, 0.0036, 0.0037])
+    cfgs = ["full", "no_subgraph", "gcn_tokens", "no_ban", "no_both"]
+    auroc = np.array([_ablation_row(c)["auroc_mean"] for c in cfgs], dtype=float)
+    auprc = np.array([_ablation_row(c)["auprc_mean"] for c in cfgs], dtype=float)
+    auroc_err = np.array([_ablation_row(c)["auroc_std"] for c in cfgs], dtype=float)
+    auprc_err = np.array([_ablation_row(c)["auprc_std"] for c in cfgs], dtype=float)
 
     bar_blue = "#1f5aa6"
     bar_slate = "#7d89b8"

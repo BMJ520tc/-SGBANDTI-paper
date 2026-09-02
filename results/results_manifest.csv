@@ -7,10 +7,10 @@ biosnap,unseen_drug,SGBANDTI,full,0.8794,0.0019,0.8821,0.0026,0.8801,0.8764,0.88
 biosnap,unseen_drug,DrugBAN,full,0.8750,0.0032,0.8806,0.0052,0.8803,0.8722,0.8729,0.8749,0.8748,0.8874,0.8740,0.8771,0.8820,0.8828,stats_input/biosnap_unseen_drug/DrugBAN/,stats_input/biosnap_unseen_drug/DrugBAN/,stats_input/biosnap_unseen_drug/DrugBAN/seed_*_y_pred.npy（逐样本重算）
 biosnap,unseen_target,SGBANDTI,full,0.6345,0.0182,0.6124,0.0212,0.6567,0.6154,0.6461,0.6167,0.6378,0.6282,0.5861,0.6355,0.5953,0.6170,stats_input/biosnap_unseen_target/SGBANDTI/,stats_input/biosnap_unseen_target/SGBANDTI/,stats_input/biosnap_unseen_target/SGBANDTI/seed_*_y_pred.npy（逐样本重算）
 biosnap,unseen_target,DrugBAN,full,0.6560,0.0170,0.6333,0.0150,0.6535,0.6817,0.6539,0.6339,0.6570,0.6326,0.6565,0.6324,0.6147,0.6303,stats_input/biosnap_unseen_target/DrugBAN/,stats_input/biosnap_unseen_target/DrugBAN/,stats_input/biosnap_unseen_target/DrugBAN/seed_*_y_pred.npy（逐样本重算）
-biosnap,random,SGBANDTI,no_subgraph,0.8757,0.0014,0.8782,0.0034,0.8740,0.8754,0.8752,0.8761,0.8778,0.8794,0.8756,0.8738,0.8809,0.8815,,,result/biosnap_random_hop2_no_subgraph/seed_*/result_metrics.pt（本地复现）
-biosnap,random,SGBANDTI,no_ban,0.8777,0.0025,0.8759,0.0036,0.8803,0.8783,0.8736,0.8773,0.8789,0.8785,0.8776,0.8697,0.8778,0.8757,,,result/biosnap_random_hop2_no_ban/seed_*/result_metrics.pt（本地复现）
-biosnap,random,SGBANDTI,no_both,0.8598,0.0028,0.8551,0.0037,0.8581,0.8628,0.8603,0.8619,0.8559,0.8492,0.8553,0.8591,0.8570,0.8549,,,result/biosnap_random_hop2_no_both/seed_*/result_metrics.pt（本地复现）
-biosnap,random,SGBANDTI,gcn_tokens,0.9051,0.0043,0.9110,0.0068,0.9016,0.9046,0.9066,0.9117,0.9010,0.9027,0.9132,0.9173,0.9171,0.9049,,,result/biosnap_random_hop2_gcn_tokens/seed_*/result_metrics.pt（本地复现）
+biosnap,random,SGBANDTI,no_subgraph,0.8757,0.0014,0.8782,0.0034,0.8740,0.8754,0.8752,0.8761,0.8778,0.8794,0.8756,0.8738,0.8809,0.8815,,,results/per_seed/biosnap_random_hop2_no_subgraph/seed_*/result_metrics.pt（本地复现）
+biosnap,random,SGBANDTI,no_ban,0.8777,0.0025,0.8759,0.0036,0.8803,0.8783,0.8736,0.8773,0.8789,0.8785,0.8776,0.8697,0.8778,0.8757,,,results/per_seed/biosnap_random_hop2_no_ban/seed_*/result_metrics.pt（本地复现）
+biosnap,random,SGBANDTI,no_both,0.8598,0.0028,0.8551,0.0037,0.8581,0.8628,0.8603,0.8619,0.8559,0.8492,0.8553,0.8591,0.8570,0.8549,,,results/per_seed/biosnap_random_hop2_no_both/seed_*/result_metrics.pt（本地复现）
+biosnap,random,SGBANDTI,gcn_tokens,0.9051,0.0043,0.9110,0.0068,0.9016,0.9046,0.9066,0.9117,0.9010,0.9027,0.9132,0.9173,0.9171,0.9049,,,results/per_seed/biosnap_random_hop2_gcn_tokens/seed_*/result_metrics.pt（本地复现）
 biosnap,random,MGNDTI,full,0.8985,0.0023,0.9046,0.0024,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 biosnap,random,MolTrans,full,0.8853,0.0027,0.8918,0.0034,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 biosnap,random,INGNN,full,0.8720,0.0007,0.8771,0.0013,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）

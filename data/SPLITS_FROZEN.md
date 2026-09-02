@@ -1,6 +1,6 @@
 # SPLITS_FROZEN（最终数据划分冻结记录）
 
-Git commit: `5d93e6c89213c747a6d958a2012885327a03710a`
+Git commit: `release-tag-pending`（原主仓库引用 commit `5d93e6c` 不在本公开仓库历史中，随本仓库发布 release/tag 时绑定）
 
 | 划分 | split 样本数(t/v/te) | 药物 | 蛋白 | 正/负 | md5(train/val/test) |
 |---|---|---|---|---|---|
