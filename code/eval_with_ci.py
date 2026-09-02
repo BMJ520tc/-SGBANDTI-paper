@@ -31,7 +31,7 @@ parser.add_argument("--checkpoint", default=None, help="path to best_model_epoch
 parser.add_argument("--n-boot", type=int, default=1000)
 parser.add_argument("--ci-seed", type=int, default=42)
 parser.add_argument("--ablation", default="full",
-                    choices=["full", "no_subgraph", "no_ban", "no_both"])
+                    choices=["full", "no_subgraph", "no_ban", "no_both", "gcn_tokens"])
 args = parser.parse_args()
 
 
@@ -54,15 +54,17 @@ def find_best_checkpoint():
 def main():
     torch.cuda.empty_cache()
     cfg = get_cfg_defaults()
-    if args.ablation in ("no_subgraph", "no_both"):
+    if args.ablation in ("no_subgraph", "no_both", "gcn_tokens"):
         cfg.ABLATION.USE_SUBGRAPH = False
     if args.ablation in ("no_ban", "no_both"):
         cfg.ABLATION.USE_BAN = False
+    if args.ablation == "gcn_tokens":
+        cfg.ABLATION.USE_GCN_TOKENS = True
     cfg.SOLVER.SEED = args.seed
     set_seed(args.seed)
     ckpt = args.checkpoint or find_best_checkpoint()
 
-    df = pd.read_csv(os.path.join("../data", args.data, args.split, "test.csv"))
+    df = pd.read_csv(os.path.join("./datasets", args.data, args.split, "test.csv"))
     ds = DTIDataset(df.index.values, df, dataset_name=args.data, split_name=args.split,
                     split_file_name="test", h=args.hop, use_nested=cfg.ABLATION.USE_SUBGRAPH)
     dl = DataLoader(ds, batch_size=64, shuffle=False, num_workers=0,
