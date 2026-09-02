@@ -28,6 +28,7 @@ SGBANDTI/
 │   ├── paired_bootstrap.py   # 配对 bootstrap（vs 基线）
 │   ├── aggregate_seeds.py    # 5 种子聚合
 │   ├── build_manifest.py     # 生成唯一结果清单 results_manifest.csv
+│   │                         # 用法: python build_manifest.py（SGBANDTI_OUT_DIR 覆盖输出目录，默认 ./results/）
 │   ├── measure_efficiency.py # 效率测量（参数量/时间/显存/推理）
 │   └── 运行说明.md           # 复现步骤
 ├── baselines/                # 对比基线代码（7 个，见 README 基线节）

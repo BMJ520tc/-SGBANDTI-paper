@@ -1,12 +1,23 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "SGBANDTI: Subgraph-GNN and Bilinear Attention for Drug-Target Interaction Prediction"
-# TODO: 论文录用后请补全以下字段
+title: "SGBANDTI: A Controlled Evaluation of Rooted-Subgraph Drug Tokens with Bilinear Attention for Drug-Target Interaction Prediction"
 authors:
-  - family-names: "YourFamilyName"
-    given-names: "YourGivenName"
-version: "v1.0.0"
-date-released: "2026-08-23"
+  - family-names: "Li"
+    given-names: "Wen"
+  - family-names: "Long"
+    given-names: "Quan"
+  - family-names: "Fu"
+    given-names: "Yanxiu"
+  - family-names: "Li"
+    given-names: "Meng"
+  - family-names: "Xiang"
+    given-names: "Ju"
+  - family-names: "Yu"
+    given-names: "Yanyan"
+  - family-names: "Zhang"
+    given-names: "Xiaojie"
+version: "v1.0.1"
+date-released: "2026-09-02"
 license: "MIT"
 keywords:
   - drug-target interaction

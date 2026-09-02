@@ -4,7 +4,10 @@
   - SGBANDTI / DrugBAN 逐 seed：stats_input/（配对 bootstrap 用的逐样本 y_pred/y_true）
   - SGBANDTI 消融配置：本地 result/*/seed_*/result_metrics.pt（full/no_subgraph/no_both 全 5 seed）
   - 其他基线：交付包 00_实验结果汇总.md 的 mean ± sample SD（ddof=1）
-差异以 stats_input 逐样本为准（可复现）；若与 00_汇总不一致，在 source 列注明。"""
+差异以 stats_input 逐样本为准（可复现）；若与 00_汇总不一致，在 source 列注明。
+用法：在仓库根运行，输出到 ./results/results_manifest.csv（可用环境变量 SGBANDTI_OUT_DIR 覆盖输出目录）。
+数据源为仓库内相对路径（stats_input/、result/）；若对应逐样本/结果目录缺失，相应行留空。"""
+import os
 import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score, average_precision_score
@@ -19,7 +22,6 @@ def stats_seed(setting, model):
     for s in SEEDS:
         fp = f'stats_input/{setting}/{model}/seed_{s}_y_pred.npy'
         ft = f'stats_input/{setting}/{model}/seed_{s}_y_true.npy'
-        import os
         if os.path.exists(fp):
             yp = np.load(fp); yt = np.load(ft)
             a.append(roc_auc_score(yt, yp)); p.append(average_precision_score(yt, yp))
@@ -69,7 +71,8 @@ for (ds, sp), st in ST_DIR.items():
 import torch, os
 ABL = {'no_subgraph': 'biosnap_random_hop2_no_subgraph',
        'no_ban': 'biosnap_random_hop2_no_ban',
-       'no_both': 'biosnap_random_hop2_no_both'}
+       'no_both': 'biosnap_random_hop2_no_both',
+       'gcn_tokens': 'biosnap_random_hop2_gcn_tokens'}
 for cfg, d in ABL.items():
     a, p = [], []
     for s in SEEDS:
@@ -83,10 +86,10 @@ for cfg, d in ABL.items():
 
 # 3) 其他基线：00_汇总 mean ± sample SD（ddof=1），无公开逐 seed
 OTHER = {
-    ('biosnap', 'random'): {'MGNDTI': (0.8947, 0.0019, 0.8983, 0.0042),
-                            'MolTrans': (0.8867, 0.0050, 0.8927, 0.0053), 'INGNN': (0.8722, 0.0006, 0.8776, 0.0013),
-                            'TransformerCPI': (0.8399, 0.0068, 0.8553, 0.0048), 'RF': (0.8402, 0.0008, 0.8678, 0.0007),
-                            'GNN-CPI': (0.7094, 0.0032, 0.7247, 0.0019)},
+    ('biosnap', 'random'): {'MGNDTI': (0.8985, 0.0023, 0.9046, 0.0024),
+                            'MolTrans': (0.8853, 0.0027, 0.8918, 0.0034), 'INGNN': (0.8720, 0.0007, 0.8771, 0.0013),
+                            'TransformerCPI': (0.8265, 0.0174, 0.8456, 0.0108), 'RF': (0.8402, 0.0008, 0.8678, 0.0007),
+                            'GNN-CPI': (0.7088, 0.0036, 0.7229, 0.0010)},
     ('bindingdb', 'random'): {'MGNDTI': (0.9500, 0.0014, 0.9326, 0.0021),
                               'RF': (0.9407, 0.0004, 0.9209, 0.0005), 'MolTrans': (0.9338, 0.0017, 0.9086, 0.0054),
                               'INGNN': (0.9228, 0.0028, 0.8951, 0.0024), 'TransformerCPI': (0.8921, 0.0012, 0.8556, 0.0016),
@@ -109,7 +112,7 @@ COLS = ['dataset', 'split', 'model', 'config', 'auroc_mean', 'auroc_std', 'auprc
         'auroc_s42', 'auroc_s52', 'auroc_s62', 'auroc_s72', 'auroc_s82',
         'auprc_s42', 'auprc_s52', 'auprc_s62', 'auprc_s72', 'auprc_s82',
         'pred_file', 'true_file', 'source']
-out = r'C:\Users\Jack\Desktop\SGBANDTI__20260823\results\results_manifest.csv'
+out = os.path.join(os.environ.get('SGBANDTI_OUT_DIR', 'results'), 'results_manifest.csv')
 pd.DataFrame(ROWS, columns=COLS).to_csv(out, index=False, encoding='utf-8')
 print('written:', out, 'rows:', len(ROWS))
 print(pd.read_csv(out).to_string(index=False))
