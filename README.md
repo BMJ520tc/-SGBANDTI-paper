@@ -92,9 +92,10 @@ pip install torchdata==0.7.1
 - **BioSNAP**：正样本 = 已知药物–蛋白相互作用；负样本 = 未标注的随机药物–蛋白对（接近平衡，正 13,830 / 负 13,627）。
 - **BindingDB**：正样本 = 实验测得的结合记录（正 20,674）。负样本的原始构建方式继承自上游处理（DrugBAN 公开代码仓库），本仓库无法独立重建其具体采样规则；0 标签按 benchmark 负样本 / 未观察对解释，不视为实验确认的非结合对（详见 `results/数据来源与处理记录.md` 与论文 Data Availability）。
 
-首次运行需重建子图缓存：
+首次运行需重建子图缓存（以下命令在 `code/` 目录下运行）：
 
 ```bash
+cd code
 python build_subgraph_cache.py --data biosnap --split random --hop 2 --use-nested nested
 python build_subgraph_cache.py --data biosnap --split random --hop 2 --use-nested flat
 python build_subgraph_cache.py --data biosnap --split unseen_drug --hop 2 --use-nested nested
@@ -106,9 +107,10 @@ python build_subgraph_cache.py --data bindingdb --split random --hop 2 --use-nes
 
 ## Usage
 
-训练（5 种子 42–82，模型按**验证集 AUROC** 选最优）：
+训练（5 种子 42–82，模型按**验证集 AUROC** 选最优；命令在 `code/` 目录下运行）：
 
 ```bash
+cd code
 # BioSNAP random 主实验（定版：AUROC 0.9062±0.0019）
 python main.py --data biosnap --split random --hop 2 --seeds 42,52,62,72,82
 
