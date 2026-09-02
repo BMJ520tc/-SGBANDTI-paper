@@ -23,7 +23,7 @@ f34c8b0d4c34d30d05e5bf5331d188a1  data/SPLITS_FROZEN.json
 ```
 a2e22baed92ddb53b45635ebc075ae10  code/build_splits.py
 fad7433f55eb220c095f04231350531b  code/eval_with_ci.py
-78d399898d356e9bf228971db0f2a544  code/build_manifest.py
+926d429fbea9e4f54f1ecde4a902ead7  code/build_manifest.py
 846d1859033e54992c8950cfd57d8a40  code/paired_bootstrap.py
 92054b2ae98c1bb8bb142842ef313091  code/run_paired_bootstrap_all.py
 8ef619a54c174586af03f0dfc6e01d2f  code/run_all.sh

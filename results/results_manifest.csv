@@ -21,17 +21,17 @@ biosnap,unseen_target,MGNDTI,full,0.6910,0.0117,0.6836,0.0188,0.7002,0.7038,0.68
 bindingdb,random,MolTrans,full,0.9337,0.0017,0.9084,0.0055,0.9328,0.9364,0.9338,0.9339,0.9317,0.9069,0.9151,0.9109,0.9085,0.9003,results/per_seed/MolTrans_bindingdb/,results/per_seed/MolTrans_bindingdb/,results/per_seed/MolTrans_bindingdb/seed_*/y_pred.npy（逐样本重算）
 biosnap,unseen_drug,MolTrans,full,0.8407,0.0094,0.8476,0.0058,0.8498,0.8471,0.8379,0.8427,0.8261,0.8533,0.8544,0.8442,0.8436,0.8425,results/per_seed/MolTrans_biosnap_unseen_drug/,results/per_seed/MolTrans_biosnap_unseen_drug/,results/per_seed/MolTrans_biosnap_unseen_drug/seed_*/y_pred.npy（逐样本重算）
 biosnap,unseen_target,MolTrans,full,0.6826,0.0185,0.6787,0.0217,0.6595,0.6965,0.6668,0.7014,0.6889,0.6459,0.6929,0.6671,0.6962,0.6913,results/per_seed/MolTrans_biosnap_unseen_target/,results/per_seed/MolTrans_biosnap_unseen_target/,results/per_seed/MolTrans_biosnap_unseen_target/seed_*/y_pred.npy（逐样本重算）
-biosnap,random,INGNN,full,0.8720,0.0007,0.8771,0.0013,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,random,GNN-CPI,full,0.7088,0.0036,0.7229,0.0010,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-bindingdb,random,MGNDTI,full,0.9500,0.0014,0.9326,0.0021,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-bindingdb,random,INGNN,full,0.9228,0.0028,0.8951,0.0024,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-bindingdb,random,TransformerCPI,full,0.8921,0.0012,0.8556,0.0016,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-bindingdb,random,GNN-CPI,full,0.6548,0.1712,0.5782,0.2045,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_drug,RF,full,0.8493,0.0006,0.8724,0.0005,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_drug,TransformerCPI,full,0.8460,0.0113,0.8551,0.0061,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_drug,INGNN,full,0.8417,0.0057,0.8510,0.0023,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_drug,GNN-CPI,full,0.6797,0.0897,0.6795,0.0933,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_target,RF,full,0.6979,0.0110,0.6867,0.0068,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_target,INGNN,full,0.6526,0.0090,0.6421,0.0075,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_target,GNN-CPI,full,0.6501,0.0030,0.6526,0.0017,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,unseen_target,TransformerCPI,full,0.6160,0.0319,0.6032,0.0216,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
+biosnap,random,INGNN,full,0.8720,0.0007,0.8771,0.0013,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,random,GNN-CPI,full,0.7088,0.0036,0.7229,0.0010,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+bindingdb,random,MGNDTI,full,0.9500,0.0014,0.9326,0.0021,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+bindingdb,random,INGNN,full,0.9228,0.0028,0.8951,0.0024,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+bindingdb,random,TransformerCPI,full,0.8921,0.0012,0.8556,0.0016,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+bindingdb,random,GNN-CPI,full,0.6548,0.1712,0.5782,0.2045,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_drug,RF,full,0.8493,0.0006,0.8724,0.0005,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_drug,TransformerCPI,full,0.8460,0.0113,0.8551,0.0061,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_drug,INGNN,full,0.8417,0.0057,0.8510,0.0023,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_drug,GNN-CPI,full,0.6797,0.0897,0.6795,0.0933,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_target,RF,full,0.6979,0.0110,0.6867,0.0068,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_target,INGNN,full,0.6526,0.0090,0.6421,0.0075,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_target,GNN-CPI,full,0.6501,0.0030,0.6526,0.0017,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）
+biosnap,unseen_target,TransformerCPI,full,0.6160,0.0319,0.6032,0.0216,,,,,,,,,,,,,00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）

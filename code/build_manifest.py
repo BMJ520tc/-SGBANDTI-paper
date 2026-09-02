@@ -150,7 +150,7 @@ OTHER = {
 for (ds, sp), models in OTHER.items():
     for name, (am, asd, pm, psd) in models.items():
         emit(ds, sp, name, 'full', None, None,
-             source=f'00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）')
+             source=f'00_实验结果汇总.md（本工作训练所得，mean±SD；逐 seed 文件未随包归档）')
         ROWS[-1]['auroc_mean'] = f'{am:.4f}'; ROWS[-1]['auroc_std'] = f'{asd:.4f}'
         ROWS[-1]['auprc_mean'] = f'{pm:.4f}'; ROWS[-1]['auprc_std'] = f'{psd:.4f}'
 
