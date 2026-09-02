@@ -6,7 +6,7 @@
 
 ## Manuscript
 ```
-de57202c99693c13ca847b7ab31066bf  manuscript_source/manuscript_mdpi.tex
+f8606294eb65f36744de2577e263f052  manuscript_source/manuscript_mdpi.tex
 957f8a282ac344bb9a0743436bf812c5  manuscript_source/model_structure.png
 92b40affd4d64dc1339ac12fd5e2d8a3  manuscript_source/figure_ablation_2x2.png
 292903917e8205a21de024f424ac2ccf  manuscript_source/figure_biosnap_split_boxplots.png
@@ -23,7 +23,7 @@ f34c8b0d4c34d30d05e5bf5331d188a1  data/SPLITS_FROZEN.json
 ```
 a2e22baed92ddb53b45635ebc075ae10  code/build_splits.py
 fad7433f55eb220c095f04231350531b  code/eval_with_ci.py
-994d961fa5527ebe5f0d44f75d743716  code/build_manifest.py
+78d399898d356e9bf228971db0f2a544  code/build_manifest.py
 846d1859033e54992c8950cfd57d8a40  code/paired_bootstrap.py
 92054b2ae98c1bb8bb142842ef313091  code/run_paired_bootstrap_all.py
 8ef619a54c174586af03f0dfc6e01d2f  code/run_all.sh

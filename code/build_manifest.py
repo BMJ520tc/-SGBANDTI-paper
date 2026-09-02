@@ -112,19 +112,39 @@ for (ds, sp), d in RF_SS.items():
                  source=f'results/per_seed/{d}/seed_summary.csv（逐 seed）',
                  pred_file=f'results/per_seed/{d}/', true_file=f'results/per_seed/{d}/')
 
+# 2.7) MGNDTI/MolTrans unseen 与 bindingdb 场景：per_seed 逐样本重算（5 seed）
+PER_SCENES = {
+    ('biosnap', 'unseen_drug', 'MGNDTI'): 'MGNDTI_biosnap_unseen_drug',
+    ('biosnap', 'unseen_target', 'MGNDTI'): 'MGNDTI_biosnap_unseen_target',
+    ('bindingdb', 'random', 'MolTrans'): 'MolTrans_bindingdb',
+    ('biosnap', 'unseen_drug', 'MolTrans'): 'MolTrans_biosnap_unseen_drug',
+    ('biosnap', 'unseen_target', 'MolTrans'): 'MolTrans_biosnap_unseen_target',
+}
+for (ds, sp, model), d in PER_SCENES.items():
+    a, p = [], []
+    for s in SEEDS:
+        fp = os.path.join(PER, d, f'seed_{s}', 'y_pred.npy')
+        ft = os.path.join(PER, d, f'seed_{s}', 'y_true.npy')
+        if os.path.exists(fp) and os.path.exists(ft):
+            yp = np.load(fp); yt = np.load(ft)
+            a.append(roc_auc_score(yt, yp)); p.append(average_precision_score(yt, yp))
+    if len(a) == len(SEEDS):
+        emit(ds, sp, model, 'full', np.array(a), np.array(p),
+             source=f'results/per_seed/{d}/seed_*/y_pred.npy（逐样本重算）',
+             pred_file=f'results/per_seed/{d}/', true_file=f'results/per_seed/{d}/')
+
 # 3) 其他基线：00_汇总 mean ± sample SD（ddof=1）；已被 per_seed 逐样本覆盖的不再重复
 OTHER = {
     ('biosnap', 'random'): {'INGNN': (0.8720, 0.0007, 0.8771, 0.0013),
                             'GNN-CPI': (0.7088, 0.0036, 0.7229, 0.0010)},
     ('bindingdb', 'random'): {'MGNDTI': (0.9500, 0.0014, 0.9326, 0.0021),
-                              'MolTrans': (0.9338, 0.0017, 0.9086, 0.0054),
                               'INGNN': (0.9228, 0.0028, 0.8951, 0.0024), 'TransformerCPI': (0.8921, 0.0012, 0.8556, 0.0016),
                               'GNN-CPI': (0.6548, 0.1712, 0.5782, 0.2045)},
-    ('biosnap', 'unseen_drug'): {'MGNDTI': (0.8589, 0.0057, 0.8675, 0.0038), 'RF': (0.8493, 0.0006, 0.8724, 0.0005),
+    ('biosnap', 'unseen_drug'): {'RF': (0.8493, 0.0006, 0.8724, 0.0005),
                                  'TransformerCPI': (0.8460, 0.0113, 0.8551, 0.0061), 'INGNN': (0.8417, 0.0057, 0.8510, 0.0023),
-                                 'MolTrans': (0.8407, 0.0082, 0.8473, 0.0057), 'GNN-CPI': (0.6797, 0.0897, 0.6795, 0.0933)},
-    ('biosnap', 'unseen_target'): {'RF': (0.6979, 0.0110, 0.6867, 0.0068), 'MGNDTI': (0.6910, 0.0105, 0.6836, 0.0168),
-                                   'MolTrans': (0.6820, 0.0166, 0.6788, 0.0193), 'INGNN': (0.6526, 0.0090, 0.6421, 0.0075),
+                                 'GNN-CPI': (0.6797, 0.0897, 0.6795, 0.0933)},
+    ('biosnap', 'unseen_target'): {'RF': (0.6979, 0.0110, 0.6867, 0.0068),
+                                   'INGNN': (0.6526, 0.0090, 0.6421, 0.0075),
                                    'GNN-CPI': (0.6501, 0.0030, 0.6526, 0.0017), 'TransformerCPI': (0.6160, 0.0319, 0.6032, 0.0216)},
 }
 for (ds, sp), models in OTHER.items():
