@@ -2,11 +2,11 @@
 
 > 对应论文 Supplementary Materials 中 source-file checksums 一项。
 > MD5 按 git 检出后的 LF 规范化文件计算（见 .gitattributes），干净 clone 上可核验。
-> 生成日期：2026-09-02。
+> 重新生成日期：2026-09-02（随第 10 版评审证据链更新）。
 
 ## Manuscript
 ```
-dfbfe2000bdc6c149a2da5b962804c1c  manuscript_source/manuscript_mdpi.tex
+e1808d814efa80fbe5ddc3c416c00481  manuscript_source/manuscript_mdpi.tex
 957f8a282ac344bb9a0743436bf812c5  manuscript_source/model_structure.png
 92b40affd4d64dc1339ac12fd5e2d8a3  manuscript_source/figure_ablation_2x2.png
 292903917e8205a21de024f424ac2ccf  manuscript_source/figure_biosnap_split_boxplots.png
@@ -25,6 +25,7 @@ a2e22baed92ddb53b45635ebc075ae10  code/build_splits.py
 fad7433f55eb220c095f04231350531b  code/eval_with_ci.py
 a67be095304a8913666d6c99353cab72  code/build_manifest.py
 846d1859033e54992c8950cfd57d8a40  code/paired_bootstrap.py
+92054b2ae98c1bb8bb142842ef313091  code/run_paired_bootstrap_all.py
 8ef619a54c174586af03f0dfc6e01d2f  code/run_all.sh
 9db5b45dd1309d68db7e916ae49be6a9  code/measure_forward_fair.py
 ad047ba99a7cbfb65ee0495fdc3bd528  code/generate_ablation_figure.py

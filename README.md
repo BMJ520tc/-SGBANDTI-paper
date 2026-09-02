@@ -182,12 +182,18 @@ python demo_eval.py        # 需先建好子图缓存（见 Data 节）
 |---|---|---|
 | **SGBANDTI** | **0.9062±0.0019** | 0.9132±0.0043 |
 | DrugBAN | 0.9100±0.0023 | 0.9172±0.0031 |
-| MolTrans | 0.8867±0.0045 | 0.8927±0.0048 |
-| MGNDTI | 0.8947±0.0019 | 0.8983±0.0042 |
+| MGNDTI | 0.8985±0.0023 | 0.9046±0.0024 |
+| MolTrans | 0.8853±0.0027 | 0.8918±0.0034 |
+| INGNN | 0.8720±0.0007 | 0.8771±0.0013 |
+| TransformerCPI | 0.8265±0.0174 | 0.8456±0.0108 |
+| RF | 0.8402±0.0008 | 0.8678±0.0007 |
+| GNN-CPI | 0.7088±0.0036 | 0.7229±0.0010 |
+
+> 数值与 `results/results_manifest.csv` 及论文 Table（随机划分主表）同源；如需复现，见数据校验→manifest 一键生成链（`bash code/run_all.sh --skip-latex`）。
 
 **冷启动 unseen_drug**：SGBANDTI 0.8794±0.0019 为最优；**unseen_target**：RF 0.6979±0.0110 最优。
 
-**配对 bootstrap（SGBANDTI vs DrugBAN，5 种子）**：ΔAUROC 均值 BioSNAP random −0.0039、BindingDB −0.0012、unseen_drug +0.0043，多数种子差异不显著（打平）；unseen_target ΔAUROC −0.0215，DrugBAN 显著更优。
+**配对 bootstrap（SGBANDTI vs DrugBAN，5 种子）**：ΔAUROC 均值 BioSNAP random −0.0039、BindingDB −0.0012、unseen_drug +0.0043（多数种子区间跨零）；unseen_target ΔAUROC −0.0215（DrugBAN 在多数种子区间排除 0）。
 
 ---
 
