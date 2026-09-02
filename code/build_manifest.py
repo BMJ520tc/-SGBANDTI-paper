@@ -85,11 +85,26 @@ for cfg, d in ABL.items():
         emit('biosnap', 'random', 'SGBANDTI', cfg, np.array(a), np.array(p),
              source=f'results/per_seed/{d}/seed_*/result_metrics.pt（本地复现）')
 
-# 3) 其他基线：00_汇总 mean ± sample SD（ddof=1），无公开逐 seed
+# 2.5) biosnap random 基线（MGNDTI/MolTrans/TransformerCPI）：per_seed 逐样本重算（5 seed）
+PER_BASE = {'MGNDTI': 'MGNDTI_biosnap', 'MolTrans': 'MolTrans_biosnap',
+            'TransformerCPI': 'TransCPI_biosnap'}
+for name, d in PER_BASE.items():
+    a, p = [], []
+    for s in SEEDS:
+        fp = os.path.join(PER, d, f'seed_{s}', 'y_pred.npy')
+        ft = os.path.join(PER, d, f'seed_{s}', 'y_true.npy')
+        if os.path.exists(fp) and os.path.exists(ft):
+            yp = np.load(fp); yt = np.load(ft)
+            a.append(roc_auc_score(yt, yp)); p.append(average_precision_score(yt, yp))
+    if a:
+        emit('biosnap', 'random', name, 'full', np.array(a), np.array(p),
+             source=f'results/per_seed/{d}/seed_*/y_pred.npy（逐样本重算）',
+             pred_file=f'results/per_seed/{d}/', true_file=f'results/per_seed/{d}/')
+
+# 3) 其他基线：00_汇总 mean ± sample SD（ddof=1）；已被 per_seed 逐样本覆盖的不再重复
 OTHER = {
-    ('biosnap', 'random'): {'MGNDTI': (0.8985, 0.0023, 0.9046, 0.0024),
-                            'MolTrans': (0.8853, 0.0027, 0.8918, 0.0034), 'INGNN': (0.8720, 0.0007, 0.8771, 0.0013),
-                            'TransformerCPI': (0.8265, 0.0174, 0.8456, 0.0108), 'RF': (0.8402, 0.0008, 0.8678, 0.0007),
+    ('biosnap', 'random'): {'INGNN': (0.8720, 0.0007, 0.8771, 0.0013),
+                            'RF': (0.8402, 0.0008, 0.8678, 0.0007),
                             'GNN-CPI': (0.7088, 0.0036, 0.7229, 0.0010)},
     ('bindingdb', 'random'): {'MGNDTI': (0.9500, 0.0014, 0.9326, 0.0021),
                               'RF': (0.9407, 0.0004, 0.9209, 0.0005), 'MolTrans': (0.9338, 0.0017, 0.9086, 0.0054),
