@@ -14,11 +14,11 @@ biosnap,random,SGBANDTI,gcn_tokens,0.9051,0.0043,0.9110,0.0068,0.9016,0.9046,0.9
 biosnap,random,MGNDTI,full,0.8985,0.0023,0.9046,0.0024,0.8971,0.8977,0.8977,0.8974,0.9026,0.9041,0.9040,0.9028,0.9035,0.9088,results/per_seed/MGNDTI_biosnap/,results/per_seed/MGNDTI_biosnap/,results/per_seed/MGNDTI_biosnap/seed_*/y_pred.npy（逐样本重算）
 biosnap,random,MolTrans,full,0.8853,0.0027,0.8918,0.0034,0.8826,0.8887,0.8841,0.8876,0.8834,0.8882,0.8955,0.8897,0.8953,0.8902,results/per_seed/MolTrans_biosnap/,results/per_seed/MolTrans_biosnap/,results/per_seed/MolTrans_biosnap/seed_*/y_pred.npy（逐样本重算）
 biosnap,random,TransformerCPI,full,0.8265,0.0174,0.8456,0.0108,0.8012,0.8380,0.8341,0.8162,0.8429,0.8293,0.8499,0.8491,0.8415,0.8579,results/per_seed/TransCPI_biosnap/,results/per_seed/TransCPI_biosnap/,results/per_seed/TransCPI_biosnap/seed_*/y_pred.npy（逐样本重算）
+biosnap,random,RF,full,0.8402,0.0008,0.8678,0.0007,0.8392,0.8408,0.8413,0.8398,0.8401,0.8670,0.8687,0.8684,0.8677,0.8674,results/per_seed/RF_biosnap/,results/per_seed/RF_biosnap/,results/per_seed/RF_biosnap/seed_summary.csv（逐 seed）
+bindingdb,random,RF,full,0.9407,0.0004,0.9209,0.0005,0.9407,0.9408,0.9403,0.9412,0.9403,0.9210,0.9210,0.9202,0.9217,0.9205,results/per_seed/RF_bindingdb/,results/per_seed/RF_bindingdb/,results/per_seed/RF_bindingdb/seed_summary.csv（逐 seed）
 biosnap,random,INGNN,full,0.8720,0.0007,0.8771,0.0013,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-biosnap,random,RF,full,0.8402,0.0008,0.8678,0.0007,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 biosnap,random,GNN-CPI,full,0.7088,0.0036,0.7229,0.0010,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 bindingdb,random,MGNDTI,full,0.9500,0.0014,0.9326,0.0021,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
-bindingdb,random,RF,full,0.9407,0.0004,0.9209,0.0005,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 bindingdb,random,MolTrans,full,0.9338,0.0017,0.9086,0.0054,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 bindingdb,random,INGNN,full,0.9228,0.0028,0.8951,0.0024,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）
 bindingdb,random,TransformerCPI,full,0.8921,0.0012,0.8556,0.0016,,,,,,,,,,,,,00_实验结果汇总.md（mean±sample SD，ddof=1；逐 seed 未公开归档）

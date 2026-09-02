@@ -101,13 +101,23 @@ for name, d in PER_BASE.items():
              source=f'results/per_seed/{d}/seed_*/y_pred.npy（逐样本重算）',
              pred_file=f'results/per_seed/{d}/', true_file=f'results/per_seed/{d}/')
 
+# 2.6) RF：seed_summary.csv（5 seed AUC/AUPRC；biosnap/bindingdb random）
+RF_SS = {('biosnap', 'random'): 'RF_biosnap', ('bindingdb', 'random'): 'RF_bindingdb'}
+for (ds, sp), d in RF_SS.items():
+    fp = os.path.join(PER, d, 'seed_summary.csv')
+    if os.path.exists(fp):
+        ss = pd.read_csv(fp)
+        if set(ss['seed'].astype(int)) == set(SEEDS):
+            emit(ds, sp, 'RF', 'full', ss['AUC'].values, ss['AUPRC'].values,
+                 source=f'results/per_seed/{d}/seed_summary.csv（逐 seed）',
+                 pred_file=f'results/per_seed/{d}/', true_file=f'results/per_seed/{d}/')
+
 # 3) 其他基线：00_汇总 mean ± sample SD（ddof=1）；已被 per_seed 逐样本覆盖的不再重复
 OTHER = {
     ('biosnap', 'random'): {'INGNN': (0.8720, 0.0007, 0.8771, 0.0013),
-                            'RF': (0.8402, 0.0008, 0.8678, 0.0007),
                             'GNN-CPI': (0.7088, 0.0036, 0.7229, 0.0010)},
     ('bindingdb', 'random'): {'MGNDTI': (0.9500, 0.0014, 0.9326, 0.0021),
-                              'RF': (0.9407, 0.0004, 0.9209, 0.0005), 'MolTrans': (0.9338, 0.0017, 0.9086, 0.0054),
+                              'MolTrans': (0.9338, 0.0017, 0.9086, 0.0054),
                               'INGNN': (0.9228, 0.0028, 0.8951, 0.0024), 'TransformerCPI': (0.8921, 0.0012, 0.8556, 0.0016),
                               'GNN-CPI': (0.6548, 0.1712, 0.5782, 0.2045)},
     ('biosnap', 'unseen_drug'): {'MGNDTI': (0.8589, 0.0057, 0.8675, 0.0038), 'RF': (0.8493, 0.0006, 0.8724, 0.0005),
